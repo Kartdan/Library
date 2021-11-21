@@ -1,0 +1,20 @@
+In aceasta tema, practic am implementat o biblioteca de carti electronice.
+Am definit clasele cerute, facand membrii privati pentru incapsulare, si cu gettere si settere.
+Apoi, am inceput sa citesc fisierele .in, si sa populez biblioteca.
+Am definit, in clasa main, o lista de carti, in care, la fiecare pas in care citeam din fisier detaliile unei carti, o introduceam.
+Analog am facut si pentru autori, countries, languages, editorialgroups, publishingbrand si publishingretailer.
+Dupa aceea, am citit relatiile intre membrii prezentati mai sus, si am facut legaturile.
+Am implementat metoda publish, pentru books, publishingbrands si editorial group, conform formatului cerut.
+La getBooksForPublishingRetailerID, practic parcurg lista de retaileri, pana il gasesc pe cel cu ID ul cerut, apoi parcurg entitatile sale din publishingArtifacts, unde, la fiecare pas,
+verific daca este book, editorial group, sau publishing brand. In ultimile 2 cazuri, parcurg entitatea respectiva, adaugand toate cartile intr-o lista, la fel si daca este book.
+La finalul functiei, elimin elementele duplicate, si returnez lista rezultata.
+La getLanguagesForPublishingRetailerID, fac cam aceeasi chestie ca la functia anterioara, adaug limbile tuturor cartilor, iar la final, returnez limbile unice.
+La getCountriesForBookID, iterez prin fiecare carte din lista de retaileri, si, in cazul, in care id ul este cel cautat, adaug country ul cartii intr-o lista. La final, returnez lista.
+La getCommonBooksForRetailerIDs, imi creez doua liste, in prima luand cartile retailerului cu ID1, iar in cea de-a doua, la fel, pentru ID2. La final, fac doua for-uri, prin care
+parcurg cele doua liste, iar, in cazul in care gasesc doua carti la fel, le adaug in lista finala, pe care o returnez.
+La getAllBooksForRetailerIDs, ideea e cam aceeasi ca la functia anterioara, doar ca, in acest caz, concatenez listele intr-o alta lista, din care elimin duplicatele, si pe care o
+returnez.
+Aditional, in clasa Administration, am mai facut niste functii de printare, pentru cele 5 metode. Tot in clasa Administration, am creat si un
+constructor, pentru a putea folosi lista de retaileri, fara a o pasa ca parametru celor 5 functii.
+Pentru testare, am declarat obiectul test, de tip Administration, si am creat cate 5 teste pentru fiecare functie. Pentru ultimile 2 functii,
+am folosit aceleasi teste.

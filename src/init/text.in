@@ -1,0 +1,40 @@
+List<Language> language_return_list = new ArrayList<>();
+    List<Language> final_language_return_list = new ArrayList<>();
+    public List<Language> getLanguagesForPublishingRetailerID(int publishingRetailerID,
+                                                            List<PublishingRetailer> publishing_retailers_list)
+    {
+        for(IPublishingArtifact aux: publishing_retailers_list.get(publishingRetailerID).publishingArtifacts)
+        {
+            if(aux instanceof Book book)
+            {
+                language_return_list.add(book.language);
+            }
+            if(aux instanceof PublishingBrand publishingBrand)
+            {
+                for(Book contor: publishingBrand.books)
+                {
+                    language_return_list.add(contor.language);
+                }
+            }
+            if(aux instanceof EditorialGroup editorialGroup)
+            {
+                for(Book contor: editorialGroup.books)
+                {
+                    language_return_list.add(contor.language);
+                }
+                //language_list_return.addAll(editorialGroup.books);
+            }
+        };
+        for(Language contor: language_return_list)
+        {
+            if(!final_language_return_list.contains(contor))
+            {
+                final_language_return_list.add(contor);
+            }
+        }
+//        for(String contor: final_language_return_list)
+//        {
+//            System.out.println(contor);
+//        }
+        return final_language_return_list;
+    }
